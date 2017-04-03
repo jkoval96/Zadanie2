@@ -5,6 +5,12 @@ void print_line_segment(int ax, int ay, int bx, int by) {
 	int dx, dy, D, err, y, x, i, j;
 	char field[bx][by];
 	
+	for(i = 0; i < bx; i++) {
+		for(j = 0; j < by; j++) {
+			field[i][j] = ' ';
+		}
+	}
+	
 	printf("%d %d %d %d\n", ax, ay, bx, by);
 	
 	dx = bx - ax;
@@ -12,19 +18,12 @@ void print_line_segment(int ax, int ay, int bx, int by) {
 	D = 2*dy - dx;
 	y = ay;
 	
-	for(i = 0; i < ay; i++) {
-		field[0][i] = '\n';
-	}
-	for(j = 0; j < ax; j++) {
-		field[i][0] = 32;
-	}
 	for(x = ax; x <= bx; x++) {
-		field[x][y] = 32;
+		field[x][y] = 'x';
 		if(D > 0) {
 			y = y + 1;
-			field[x][y] = '\n';
 			for(i = 0; i <= x; i++) {
-				field[x][y] = 'x';
+				field[x][y] = ' ';
 			}
 			D = D - 2*dx;
 		}
@@ -34,6 +33,7 @@ void print_line_segment(int ax, int ay, int bx, int by) {
 		for(j = 0; j < by; j++) {
 			printf("%c",field[i][j]);
 		}
+		printf("\n");
 	}
 }
 		
