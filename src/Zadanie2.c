@@ -15,20 +15,41 @@ void print_line_segment(int ax, int ay, int bx, int by) {
 	
 	dx = bx - ax;
 	dy = by - ay;
-	D = 2*dy - dx;
-	y = ay;
 	
-	for(x = ax; x <= bx; x++) {
-		field[x][y] = 'x';
-		if(D > 0) {
-			y = y + 1;
-			for(i = 0; i <= x; i++) {
-				field[x][y] = ' ';
+	if(dx >= dy) {
+		D = 2*dy - dx;
+		y = ay;
+	
+		for(x = ax; x <= bx; x++) {
+			field[x][y] = 'x';
+			if(D > 0) {
+				y = y + 1;
+				for(i = 0; i <= x; i++) {
+					field[x][y] = ' ';
+				}
+				D = D - 2*dx;
 			}
-			D = D - 2*dx;
+			D = D + 2*dy;
 		}
-		D = D + 2*dy;
 	}
+	
+	else {
+		D = 2*dx - dx;
+		x = ax;
+	
+		for(y = ay; y <= by; y++) {
+			field[x][y] = 'x';
+			if(D > 0) {
+				x = x + 1;
+				for(i = 0; i <= y; i++) {
+					field[x][y] = ' ';
+				}
+				D = D - 2*dy;
+			}
+			D = D + 2*dx;
+		}
+	}
+	
 	for(i = 0; i < bx; i++) {
 		for(j = 0; j < by; j++) {
 			printf("%c",field[i][j]);
