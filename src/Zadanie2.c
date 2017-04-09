@@ -2,7 +2,7 @@
 	
 void print_line_segment(int ax, int ay, int bx, int by) {
 	//using Bresenham's line algorithm
-	int dx, dy, D, err, y, x, i, j;
+	int dx, dy, D, y, x, i, j;
 	char field[bx][by];
 	
 	for(i = 0; i < bx; i++) {
@@ -24,9 +24,6 @@ void print_line_segment(int ax, int ay, int bx, int by) {
 			field[x][y] = 'x';
 			if(D > 0) {
 				y = y + 1;
-				for(i = 0; i <= x; i++) {
-					field[x][y] = ' ';
-				}
 				D = D - 2*dx;
 			}
 			D = D + 2*dy;
@@ -34,16 +31,13 @@ void print_line_segment(int ax, int ay, int bx, int by) {
 	}
 	
 	else {
-		D = 2*dx - dx;
+		D = 2*dx - dy;
 		x = ax;
 	
 		for(y = ay; y <= by; y++) {
 			field[x][y] = 'x';
 			if(D > 0) {
 				x = x + 1;
-				for(i = 0; i <= y; i++) {
-					field[x][y] = ' ';
-				}
 				D = D - 2*dy;
 			}
 			D = D + 2*dx;
