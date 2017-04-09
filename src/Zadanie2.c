@@ -51,8 +51,14 @@ void print_line_segment(char ax, char ay, char bx, char by) {
 }
 		
 void controller(int ax, int ay, int bx, int by) {
-	if(ax > bx) {
+	if(ax > bx && ay > by) {
 		print_line_segment(bx, by, ax, ay);
+	}
+	else if(ax > bx && ay < by) {
+		print_line_segment(bx, ay, ax, by);
+	}
+	else if(ax < bx && ay > by) {
+		print_line_segment(ax, by, bx, ay);
 	}
 	else {
 		print_line_segment(ax, ay, bx, by);
