@@ -20,7 +20,7 @@ void print_line_segment(int ax, int ay, int bx, int by) {
 		D = 2*dy - dx;
 		y = ay;
 	
-		for(x = ax; x <= bx; x++) {
+		for(x = ax; x < bx; x++) {
 			field[y][x] = 'x';
 			if(D > 0) {
 				y = y + 1;
@@ -33,8 +33,8 @@ void print_line_segment(int ax, int ay, int bx, int by) {
 		D = 2*dx - dy;
 		x = ax;
 	
-		for(y = ay; y <= by; y++) {
-			field[x][y] = 'x';
+		for(y = ay; y < by; y++) {
+			field[y][x] = 'x';
 			if(D > 0) {
 				x = x + 1;
 				D = D - 2*dy;
