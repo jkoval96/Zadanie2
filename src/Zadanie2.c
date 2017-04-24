@@ -71,8 +71,18 @@ int main(void) {
 	printf("Zadaj x-ovu a y-ovu suradnicu prveho bodu:\n");
 	scanf("%d %d", &ax, &ay);
 	
+	do {
+		printf("Zle zadane suradnice,zadaj znovu:\n");	
+		scanf("%d %d", &ax, &ay);
+	} while((ax < 0 || ax > 255) || (ay < 0 || ay > 255));
+	
 	printf("Zadaj x-ovu a y-ovu suradnicu druheho bodu:\n");
 	scanf("%d %d", &bx, &by);
+	
+	do {
+		printf("Zle zadane suradnice,zadaj znovu:\n");	
+		scanf("%d %d", &bx, &by);
+	} while((bx < 0 || bx > 255) || (by < 0 || by > 255));
 	
 	controller(ax, ay, bx, by);
 	
