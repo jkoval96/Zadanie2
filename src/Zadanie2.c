@@ -4,9 +4,10 @@
 void print_line_segment(char ax, char ay, char bx, char by) {
 	//using Bresenham's line algorithm
 	int dx, dy, D, y, x, i, j, temp1, temp2;
-	char field[by+1][bx+1];
 	
 	if(ax < bx && ay < by) {
+		char field[by+1][bx+1];
+		
 		for(i = 0; i <= by; i++) {
 			for(j = 0; j <= bx; j++) {
 				field[i][j] = ' ';
@@ -58,7 +59,17 @@ void print_line_segment(char ax, char ay, char bx, char by) {
 			ay = by;
 			bx = temp1;
 			by = temp2;
+		} else if(ax > bx && ay < by) {
+			temp1 = ax;
+			ax = bx;
+			bx = temp1;
+		} else if(ax < bx && ay > by) {
+			temp2 = ay;
+			ay = by;
+			by = temp2;
 		}
+		char field[by+1][bx+1];
+		
 		for(i = 0; i <= by; i++) {
 			for(j = 0; j <= bx; j++) {
 				field[i][j] = ' ';
@@ -104,18 +115,6 @@ void print_line_segment(char ax, char ay, char bx, char by) {
 		}
 	}
 }
-		
-void controller(int ax, int ay, int bx, int by) {
-	if(ax > bx && ay < by) {
-		print_line_segment(bx, ay, ax, by);
-	}
-	else if(ax < bx && ay > by) {
-		print_line_segment(ax, by, bx, ay);
-	}
-	else {
-		print_line_segment(ax, ay, bx, by);
-	}
-}
 	
 int main(void) {
 	int ax, ay, bx, by;
@@ -124,15 +123,13 @@ int main(void) {
 		printf("Zadaj x-ovu a y-ovu suradnicu prveho bodu:\n");	
 		scanf("%d %d", &ax, &ay);
 	} while((ax < 0 || ax > 255) || (ay < 0 || ay > 255));
-	
-
-	
+		
 	do {
 		printf("Zadaj x-ovu a y-ovu suradnicu druheho bodu:\n");	
 		scanf("%d %d", &bx, &by);
 	} while((bx < 0 || bx > 255) || (by < 0 || by > 255));
 	
-	controller(ax, ay, bx, by);
+	print_line_segment(ax, ay, bx, by);
 	
 	return 0;
 }
