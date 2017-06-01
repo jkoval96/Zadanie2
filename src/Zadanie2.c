@@ -18,29 +18,29 @@ void print_line_segment(char ax, char ay, char bx, char by) {
 		dy = by - ay;
 		
 		if(dx >= dy) {
-			D = 2*dy - dx;
+			D = 2*dy + dx;
 			y = by;
 		
 			for(x = ax; x < bx; x++) {
 				field[y][x] = 'x';
 				if(D > 0) {
 					y = y - 1;
-					D = D - 2*dx;
+					D = D + 2*dx;
 				} else {
-					D = D + 2*dy;
+					D = D - 2*dy;
 				}
 			}
 		} else {
-			D = 2*dx - dy;
+			D = 2*dx + dy;
 			x = ax;
 		
 			for(y = by; y < ay; y--) {
 				field[y][x] = 'x';
 				if(D > 0) {
 					x = x + 1;
-					D = D - 2*dy;
+					D = D + 2*dy;
 				} else {
-					D = D + 2*dx;
+					D = D - 2*dx;
 				}
 			}
 		}
@@ -80,29 +80,29 @@ void print_line_segment(char ax, char ay, char bx, char by) {
 		dy = by - ay;
 		
 		if(dx >= dy) {
-			D = 2*dy - dx;
+			D = 2*dy + dx;
 			y = ay;
 		
 			for(x = ax; x < bx; x++) {
 				field[y][x] = 'x';
 				if(D > 0) {
 					y = y + 1;
-					D = D - 2*dx;
+					D = D + 2*dx;
 				} else {
-					D = D + 2*dy;
+					D = D - 2*dy;
 				}
 			}
 		} else {
-			D = 2*dx - dy;
+			D = 2*dx + dy;
 			x = ax;
 		
 			for(y = ay; y < by; y++) {
 				field[y][x] = 'x';
 				if(D > 0) {
 					x = x + 1;
-					D = D - 2*dy;
+					D = D + 2*dy;
 				} else {
-					D = D + 2*dx;
+					D = D - 2*dx;
 				}
 			}
 		}
